@@ -50,13 +50,12 @@ export default class WelcomeToVR extends React.Component {
   }
 
   renderMasawada() {
-    if (this.masawadaList) return this.masawadaList;
-    const radius = 5;
-    const bottom = 10;
-    const speedUp = 0.3;
+    const bottom = 15;
+    const speedUp = 0.5;
     speed = Math.cos(this.state.step / 100);
     const result = [];
-    for (var i = 0; i < 100; i++) {
+    const radius = Math.cos(this.state.step / 10) * 10;
+    for (var i = 0; i < 50; i++) {
       result.push(
         <Image key={`masawada-${i}`} source={asset('masawada.png')}
           style={{
@@ -66,15 +65,14 @@ export default class WelcomeToVR extends React.Component {
             layoutOrigin: [0, 0],
             transform: [
               { translate: [Math.sin(i/speed)*radius, bottom - i*speedUp, Math.cos(i/speed)*radius ]},
-/*               { rotateX: rand(0, 360) },
+              { rotateX: rand(0, 360) },
               { rotateY: rand(0, 360) },
-              { rotateZ: rand(0, 360) }, */
+              { rotateZ: rand(0, 360) },
             ],
           }} />
       );
     }
-    this.masawadaList = result;
-    return this.masawadaList;
+    return result;
   }
 };
 
